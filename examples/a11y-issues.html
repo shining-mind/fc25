@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./global.css" />
+  <title>Проблемы с некоторыми ARIA атрибутами</title>
+</head>
+<body>
+  <span id="tac">Чекбокс</span>
+  <span
+    role="checkbox"
+    aria-labelledby="tac"
+  ></span>
+  <div>
+    <template shadowrootmode="open">
+      <span
+        role="checkbox"
+        aria-labelledby="tac"
+      ></span>
+    </template>
+  </div>
+</body>
+</html>

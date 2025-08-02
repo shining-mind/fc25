@@ -1,0 +1,7 @@
+.bg-sky-500 {
+  background-color: oklch(68.5% .169 237.323);
+}
+
+.m-8 {
+  margin: calc(0.25rem * 8);
+}

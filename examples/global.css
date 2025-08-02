@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
+
+
+body {
+  --bg-color: rgb(27, 27, 27);
+  --yellow: rgb(247, 214, 83);
+
+  background-color: var(--bg-color);
+  font-family: "Geist Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  padding: 0;
+  margin: 0;
+
+  font-size: 2rem;
+  color: #fff;
+}
