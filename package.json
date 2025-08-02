@@ -1,0 +1,13 @@
+{
+  "packageManager": "yarn@4.9.2",
+  "workspaces": [
+    "presentation",
+    "examples"
+  ],
+  "scripts": {
+    "examples": "serve ./examples"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
