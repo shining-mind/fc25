@@ -1,0 +1,29 @@
+:root {
+  font-family: 'Consolas', 'Courier New', monospace;
+  line-height: 1.4;
+  font-weight: 400;
+  font-size: 14px;
+
+  color-scheme: dark;
+  color: #cccccc;
+  background-color: #1e1e1e;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100dvh;
+  width: 100dvw;
+  overflow: hidden;
+  background-color: #1e1e1e;
+}
+
+playground-ide {
+  width: 100%;
+  height: 100%;
+}

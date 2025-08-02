@@ -1,0 +1,59 @@
+playground-ide {
+  /* Основные стили редактора */
+  --playground-code-background: #1e1e1e;
+  --playground-code-default-color: #cccccc;
+  --playground-code-cursor-color: #ffffff;
+  --playground-code-selection-background: #264f78;
+  --playground-code-gutter-background: #1e1e1e;
+  --playground-code-gutter-border-right: 1px solid #2d2d30;
+  --playground-code-linenumber-color: #858585;
+  
+  /* Цвета синтаксиса - VSCode Default Dark Modern */
+  --playground-code-keyword-color: #569cd6;
+  --playground-code-atom-color: #569cd6;
+  --playground-code-number-color: #b5cea8;
+  --playground-code-type-color: #4ec9b0;
+  --playground-code-def-color: #9cdcfe;
+  --playground-code-variable-color: #9cdcfe;
+  --playground-code-variable-2-color: #4fc1ff;
+  --playground-code-variable-3-color: #4fc1ff;
+  --playground-code-property-color: #9cdcfe;
+  --playground-code-operator-color: #cccccc;
+  --playground-code-comment-color: #6a9955;
+  --playground-code-string-color: #ce9178;
+  --playground-code-string-2-color: var(--playground-code-string-color);
+  --playground-code-meta-color: #569cd6;
+  --playground-code-qualifier-color: #4ec9b0;
+  --playground-code-builtin-color: #4ec9b0;
+  --playground-code-tag-color: #569cd6;
+  --playground-code-attribute-color: #9cdcfe;
+  --playground-code-callee-color: #dcdcaa;
+  
+  /* Стили вкладок */
+  --playground-tab-bar-background: #2d2d30;
+  --playground-tab-bar-foreground-color: #cccccc;
+  --playground-tab-bar-active-color: #ffffff;
+  --playground-tab-bar-indicator-color: #007acc;
+  
+  /* Стили панели предпросмотра */
+  --playground-preview-toolbar-background: #2d2d30;
+  --playground-preview-toolbar-foreground-color: #cccccc;
+  
+  /* Границы и выделение */
+  --playground-border: 1px solid #2d2d30;
+  --playground-highlight-color: #007acc;
+}
+
+/* Стили для частей playground-ide */
+playground-ide::part(tab-bar) {
+  border-bottom: 1px solid #2d2d30;
+}
+
+playground-ide::part(editor) {
+  border: 1px solid #2d2d30;
+}
+
+playground-ide::part(preview) {
+  border: 1px solid #2d2d30;
+  background: #ffffff;
+}
