@@ -9,10 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "dedent": "^1.6.0",
     "lit": "^3.3.0",
     "playground-elements": "^0.20.0"
   },
   "devDependencies": {
+    "prettier": "3.6.2",
     "typescript": "~5.8.3",
     "vite": "^7.0.4"
   }

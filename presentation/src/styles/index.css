@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap');
+
 :root {
-  font-family: 'Consolas', 'Courier New', monospace;
+  --yellow: rgb(247, 214, 83);
+
+  font-family: 'JetBrains Mono', monospace;
   line-height: 1.4;
   font-weight: 400;
   font-size: 14px;
@@ -20,10 +24,5 @@ body {
   height: 100dvh;
   width: 100dvw;
   overflow: hidden;
-  background-color: #1e1e1e;
-}
-
-playground-ide {
-  width: 100%;
-  height: 100%;
+  background-color: #272727;
 }

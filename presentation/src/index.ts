@@ -1,1 +1,1 @@
-import 'playground-elements';
+import './app/fc25-app.ts';
