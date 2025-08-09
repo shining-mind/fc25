@@ -110,7 +110,6 @@ export class DrawingOverlay extends LitElement {
   private handleKeyDown = (event: KeyboardEvent) => {
     if (this.disabled) return;
 
-    console.log(event);
     if (
       (event.metaKey || event.ctrlKey) &&
       event.shiftKey &&
@@ -242,7 +241,6 @@ export class DrawingOverlay extends LitElement {
   }
 
   private redo() {
-    console.log('redo', this.historyIndex, this.elementsHistory.length);
     if (this.historyIndex < this.elementsHistory.length - 1) {
       this.historyIndex++;
       this.elements = [...this.elementsHistory[this.historyIndex]];
@@ -328,16 +326,6 @@ export class DrawingOverlay extends LitElement {
         </defs>
 
         ${this.elements.map((element) => this.renderElement(element))}
-        ${
-          this.pendingStart
-            ? svg`<circle
-              class="pending-point"
-              r="3"
-              cx="${this.pendingStart.x}"
-              cy="${this.pendingStart.y}"
-            />`
-            : ''
-        }
       </svg>
     `;
   }
