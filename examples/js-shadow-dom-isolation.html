@@ -1,22 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./global.css" />
-  <title>Изоляция от внешнего JS</title>
-</head>
-<body>
-  <div id="host">
-    <template shadowrootmode="open">
-      <p>...</p>
-    </template>
-  </div>
-  <script>
-    document.querySelectorAll('p').length // 0
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./global.css" />
+    <title>Изоляция от внешнего JS</title>
+  </head>
+  <body>
+    <div id="host">
+      <template shadowrootmode="open">
+        <p>...</p>
+      </template>
+    </div>
+    <script>
+      document.querySelectorAll("p").length; // 0
 
-    const host = document.getElementById('host');
-    host.shadowRoot.querySelectorAll('p').length // 1
-  </script>
-</body>
+      const host = document.getElementById("host");
+      host.shadowRoot.querySelectorAll("p").length; // 1
+    </script>
+  </body>
 </html>

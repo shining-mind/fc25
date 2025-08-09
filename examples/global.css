@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap');
 
 
 body {
@@ -6,7 +6,7 @@ body {
   --yellow: rgb(247, 214, 83);
 
   background-color: var(--bg-color);
-  font-family: "Geist Mono", monospace;
+  font-family: "JetBrains Mono", monospace;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;

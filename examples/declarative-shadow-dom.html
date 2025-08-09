@@ -1,33 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./global.css" />
-  <title>Declarative Shadow DOM</title>
-  <style>
-    body {
-      font-size: 4rem;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./global.css" />
+    <title>Declarative Shadow DOM</title>
+    <style>
+      body {
+        font-size: 4rem;
+      }
 
-    div {
-      padding: 2rem 4rem;
-      width: fit-content;
-    }
+      div {
+        padding: 2rem 4rem;
+        width: fit-content;
+      }
 
-    p {
-      color: var(--yellow); 
-    }
-  </style>
-</head>
-<body>
-<div>
-  <template shadowrootmode="open">
-    <style>p {color: #fff } </style>
-    <p>Абзац "скрыт" внутри Shadow DOM</p>
-    <slot></slot>
-  </template>
-  <p>Абзац находится в Light DOM</p>
-</div>
-</body>
+      p {
+        color: var(--yellow);
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <template shadowrootmode="open">
+        <style>
+          p {
+            color: #fff;
+          }
+        </style>
+        <p>Абзац «скрыт» внутри Shadow DOM</p>
+        <slot></slot>
+      </template>
+      <p>Абзац находится в Light DOM</p>
+    </div>
+  </body>
 </html>
