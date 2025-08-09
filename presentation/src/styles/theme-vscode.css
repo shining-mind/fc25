@@ -46,13 +46,14 @@ playground-ide {
 
 /* Стили для частей playground-ide */
 playground-ide::part(tab-bar) {
-  border-bottom: 1px solid #2d2d30;
+  border-bottom: var(--playground-border);
 }
 
 playground-ide::part(editor) {
-  border: 1px solid #2d2d30;
+  border: var(--playground-border);
 }
 
 playground-ide::part(preview) {
-  border: 1px solid #2d2d30;
+  box-sizing: border-box;
+  border: var(--playground-border);
 }
