@@ -37,11 +37,12 @@ export const globalConfig = {
   },
 } satisfies ProjectManifest;
 
-export const globalHead = dedent`
+export const globalHead = (extra: string = '') => dedent`
   <!-- playground-hide -->
   <!doctype html>
   <head>
     <link rel="stylesheet" href="./global.css" />
+    ${extra}
   </head>
   <!-- playground-hide-end -->
 `;

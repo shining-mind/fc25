@@ -6,7 +6,7 @@ export default {
   files: {
     'index.html': {
       content:
-        globalHead +
+        globalHead() +
         dedent`
         <body>
           <script type="module" src="./acme-button.js"></script>
