@@ -210,6 +210,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@lit-labs/router@npm:^0.1.4":
+  version: 0.1.4
+  resolution: "@lit-labs/router@npm:0.1.4"
+  dependencies:
+    lit: "npm:^2.0.0 || ^3.0.0"
+  checksum: 10c0/bf2d3cc80a23ef858430f630f379b7d3dc21e65664eb222211bfa3f68e0c00cbe00118cb4c39e0cee7cdef918d091f5c79d466a84a9f55e18f8417e051a434d9
+  languageName: node
+  linkType: hard
+
 "@lit-labs/ssr-dom-shim@npm:^1.0.0, @lit-labs/ssr-dom-shim@npm:^1.1.0, @lit-labs/ssr-dom-shim@npm:^1.4.0":
   version: 1.4.0
   resolution: "@lit-labs/ssr-dom-shim@npm:1.4.0"
@@ -2121,6 +2130,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "prentation@workspace:presentation"
   dependencies:
+    "@lit-labs/router": "npm:^0.1.4"
     dedent: "npm:^1.6.0"
     lit: "npm:^3.3.0"
     playground-elements: "npm:^0.20.0"

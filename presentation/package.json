@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@lit-labs/router": "^0.1.4",
     "dedent": "^1.6.0",
     "lit": "^3.3.0",
     "playground-elements": "^0.20.0"
