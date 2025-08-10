@@ -52,7 +52,7 @@ export class FC25App extends LitElement {
         box-sizing: border-box;
         --playground-preview-width: 40%;
         --playground-code-font-family: 'JetBrains Mono', monospace;
-        --playground-code-font-size: 2rem;
+        --playground-code-font-size: 2.125rem;
         --playground-code-line-padding: 0 1rem;
         border-bottom: var(--playground-border);
         width: 100%;

@@ -19,7 +19,7 @@ export const globalConfig = {
           font-optical-sizing: auto;
           font-weight: 400;
           font-style: normal;
-          font-size: 2rem;
+          font-size: 2.125em;
           color: #fff;
         }
       `,

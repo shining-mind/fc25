@@ -54,7 +54,7 @@ export default {
         }
 
         :host, ::slotted(*) {
-          border-width: 1px;
+          border-width: 2px;
           border-style: solid;
           border-color: transparent;
           transition: border-color 0.3s ease-in-out;
