@@ -10,6 +10,9 @@ import type { DrawingElement } from '../components/drawing-overlay.js';
 
 // Examples
 import shadowDomStylesEncapsulation from '../config/shadow-dom-styles-encapsulation.ts';
+import a11yIssues from '../config/encapsulation-issues.ts';
+import globalStyles from '../config/global-styles.ts';
+import formIssues from '../config/form-issues.ts';
 import shadowDomStyling, {
   drawHistory as shadowDomStylingDrawHistory,
 } from '../config/shadow-dom-styling.ts';
@@ -20,6 +23,9 @@ import theme from '../styles/theme-vscode.css?inline';
 const examples: Record<string, ProjectManifest> = {
   'shadow-dom-encapsulation': shadowDomStylesEncapsulation,
   'shadow-dom-styling': shadowDomStyling,
+  'a11y-issues': a11yIssues,
+  'global-styles': globalStyles,
+  'form-issues': formIssues,
 };
 
 @customElement('fc25-app')
@@ -81,8 +87,21 @@ export class FC25App extends LitElement {
 
   renderMenu() {
     return html`<ul>
-      <li><a href="/shadow-dom-encapsulation">Инкапсуляция Shadow DOM</a></li>
-      <li><a href="/shadow-dom-styling">Стилизация Shadow DOM</a></li>
+      <li>
+        <a href="/shadow-dom-encapsulation">Инкапсуляция Shadow DOM</a>
+      </li>
+      <li>
+        <a href="/shadow-dom-styling">Стилизация Shadow DOM</a>
+      </li>
+      <li>
+        <a href="/encapsulation-issues">Проблемы из-за чрезмерной изоляции</a>
+      </li>
+      <li>
+        <a href="/global-styles">Глобальные стили</a>
+      </li>
+      <li>
+        <a href="/form-issues">Затруднена работа с формами</a>
+      </li>
     </ul>`;
   }
 
