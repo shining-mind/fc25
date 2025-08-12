@@ -34,7 +34,9 @@ export default {
             <form id="form">
               <custom-input name="value">
               </custom-input>
-              <button type="submit">Отправить</button>
+              <button type="submit">
+                Отправить
+              </button>
             </form>
 
             <pre id="output"></pre>

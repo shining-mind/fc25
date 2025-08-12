@@ -213,6 +213,48 @@ root.adoptedStyleSheets = [sheet];
 </body>
 ```
 
+### Затруднена работа с формами
+
+```html
+<body>
+  <template shadowrootmode="open">
+    <form id="form">
+      <custom-input name="value"> </custom-input>
+      <button type="submit">Отправить</button>
+    </form>
+
+    <pre id="output"></pre>
+  </template>
+</body>
+```
+
+```ts
+@customElement('custom-input')
+export class CustomInput extends LitElement {
+  static styles = [sheet];
+
+  @property() name!: string;
+
+  render() {
+    return html` <input name="${this.name}" type="text" /> `;
+  }
+}
+```
+
+```html
+<body>
+  <template shadowrootmode="open">
+    <link rel="stylesheet" href="./custom-input.css" />
+    <form id="form">
+      <input name="value" />
+      <button type="submit">Отправить</button>
+    </form>
+
+    <pre id="output"></pre>
+  </template>
+</body>
+```
+
 ## 04. Экосистема Lit
 
 ### Управление состоянием
@@ -241,6 +283,47 @@ class UserProfile extends LitElement {
 
   render() {
     return html`<p>User name: ${this.profileStore.value.name}</p>`;
+  }
+}
+```
+
+### Реализация роутинга
+
+```ts
+class EddlCouponsApp extends LitElement {
+  public router: Router = new Router(/* ... */);
+  public route = new RouteController(
+    this,
+    { store: this.router },
+    {
+      'cps-index': () => html`<eddl-cps-index-page> </eddl-cps-index-page>`,
+      'cps-campaign': ({ params }) =>
+        html`<eddl-cps-coupon-page
+          .couponId=${params.id}
+        ></eddl-cps-coupon-page>`,
+    },
+  );
+}
+```
+
+```ts
+class EddlCouponsApp extends LitElement {
+  public route = new RouteController(
+    this,
+    { store: this.router },
+    {
+      'cps-index': () => html`<eddl-cps-index-page> </eddl-cps-index-page>`,
+      'cps-campaign': ({ params }) =>
+        html`<eddl-cps-coupon-page
+          .couponId=${params.id}
+        ></eddl-cps-coupon-page>`,
+    },
+  );
+
+  override render() {
+    return html` <my-header></my-header>
+      ${this.route.render()}
+      <my-footer></my-footer>`;
   }
 }
 ```
@@ -281,6 +364,28 @@ class MyComponent extends LitElement {
       ></input>
       <!-- ... -->
     `;
+  }
+}
+```
+
+### Директивы
+
+```ts
+class AcmeApp extends LitElement {
+  async loadData() {
+    return sleep(3000).then(() => 'Data');
+  }
+
+  render() {
+    return html`<p>Current Time: ${now()}</p>
+      <input
+        .value=${until(
+          this.loadData(),
+          /* ... */
+          delay(500, '..'),
+          '.',
+        )}
+      />`;
   }
 }
 ```
