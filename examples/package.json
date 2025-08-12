@@ -1,6 +1,10 @@
 {
+  "private": true,
   "name": "examples",
   "packageManager": "yarn@4.9.2",
+  "scripts": {
+    "start": "serve"
+  },
   "devDependencies": {
     "serve": "^14.2.4"
   }

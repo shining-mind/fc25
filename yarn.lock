@@ -2126,9 +2126,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prentation@workspace:presentation":
+"presentation@workspace:presentation":
   version: 0.0.0-use.local
-  resolution: "prentation@workspace:presentation"
+  resolution: "presentation@workspace:presentation"
   dependencies:
     "@lit-labs/router": "npm:^0.1.4"
     dedent: "npm:^1.6.0"

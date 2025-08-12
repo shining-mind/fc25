@@ -5,9 +5,7 @@
     "examples"
   ],
   "scripts": {
-    "examples": "serve ./examples"
-  },
-  "devDependencies": {
-    "serve": "^14.2.4"
+    "examples": "yarn workspace examples start",
+    "presentation": "yarn workspace presentation start"
   }
 }
