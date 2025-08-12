@@ -6,16 +6,14 @@ import 'playground-elements';
 import '../components/drawing-overlay.js';
 
 import type { ProjectManifest } from '../config/interface.ts';
-import type { DrawingElement } from '../components/drawing-overlay.js';
 
 // Examples
 import shadowDomStylesEncapsulation from '../config/shadow-dom-styles-encapsulation.ts';
-import a11yIssues from '../config/encapsulation-issues.ts';
+import encapsulationIssues from '../config/encapsulation-issues.ts';
 import globalStyles from '../config/global-styles.ts';
 import formIssues from '../config/form-issues.ts';
-import shadowDomStyling, {
-  drawHistory as shadowDomStylingDrawHistory,
-} from '../config/shadow-dom-styling.ts';
+import directives from '../config/directives.ts';
+import shadowDomStyling from '../config/shadow-dom-styling.ts';
 
 // Styles
 import theme from '../styles/theme-vscode.css?inline';
@@ -23,9 +21,10 @@ import theme from '../styles/theme-vscode.css?inline';
 const examples: Record<string, ProjectManifest> = {
   'shadow-dom-encapsulation': shadowDomStylesEncapsulation,
   'shadow-dom-styling': shadowDomStyling,
-  'a11y-issues': a11yIssues,
   'global-styles': globalStyles,
   'form-issues': formIssues,
+  'encapsulation-issues': encapsulationIssues,
+  directives,
 };
 
 @customElement('fc25-app')
@@ -58,7 +57,7 @@ export class FC25App extends LitElement {
         box-sizing: border-box;
         --playground-preview-width: 40%;
         --playground-code-font-family: 'JetBrains Mono', monospace;
-        --playground-code-font-size: 2.125rem;
+        --playground-code-font-size: 2rem;
         --playground-code-line-padding: 0 1rem;
         border-bottom: var(--playground-border);
         width: 100%;
@@ -102,6 +101,9 @@ export class FC25App extends LitElement {
       <li>
         <a href="/form-issues">Затруднена работа с формами</a>
       </li>
+      <li>
+        <a href="/directives">Директивы</a>
+      </li>
     </ul>`;
   }
 
@@ -114,10 +116,7 @@ export class FC25App extends LitElement {
       >
       </playground-ide>
 
-      <drawing-overlay
-        .initialHistory=${shadowDomStylingDrawHistory as DrawingElement[][]}
-        initialHistoryIndex="0"
-      ></drawing-overlay>
+      <drawing-overlay></drawing-overlay>
     `;
   }
 }

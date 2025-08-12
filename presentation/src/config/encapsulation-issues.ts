@@ -18,14 +18,14 @@ export default {
             }
           </style>
           <!-- playground-hide-end -->
-          <input type="checkbox" id="checkbox1" />
+          <input type="checkbox" id="checkbox1"/>
           <label for="checkbox1">Чекбокс 1</label>
           <div>
             <template shadowrootmode="open">
               <!-- playground-hide -->
               <link rel="stylesheet" href="./styles.css" />
               <!-- playground-hide-end -->
-              <input type="checkbox" id="checkbox2" />
+              <input type="checkbox" id="checkbox2"/>
               <slot></slot>
             </template>
             <label for="checkbox2">Чекбокс 2</label>
