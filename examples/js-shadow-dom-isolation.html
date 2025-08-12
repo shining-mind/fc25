@@ -9,14 +9,17 @@
   <body>
     <div id="host">
       <template shadowrootmode="open">
-        <p>...</p>
+        <p>Это абзац</p>
       </template>
     </div>
-    <script>
-      document.querySelectorAll("p").length; // 0
+    <hr />
+    <pre id="output">
+document.querySelectorAll("p").length; // 0
 
-      const host = document.getElementById("host");
-      host.shadowRoot.querySelectorAll("p").length; // 1
-    </script>
+// Чтобы получить доступ к абзацу в Shadow DOM
+// надо обратиться к shadowRoot
+const host = document.getElementById("host");
+host.shadowRoot.querySelectorAll("p").length; // 1
+    </pre>
   </body>
 </html>
