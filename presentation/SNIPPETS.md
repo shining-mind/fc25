@@ -1,5 +1,28 @@
 # Сниппеты кода для презентации
 
+В данном документе представлены сниппеты кода, используемые в презентации.
+
+## 00. Введение
+
+```html
+<div class="alert">
+  <strong>Какое-то сообщение</strong>
+  <button>Закрыть</button>
+</div>
+```
+
+```js
+$('.alert button').on('click', function () {
+  $(this).parent().hide();
+});
+```
+
+```html
+<my-alert>
+  <strong>Какое-то сообщение</strong>
+</my-alert>
+```
+
 ## 02. Что такое веб-компоненты?
 
 ### Custom Elements
@@ -31,6 +54,17 @@ document.body.appendChild(el);
 <body>
   <my-element size="1"><my-element>
 </body>
+```
+
+### Shadow DOM
+
+```js
+const host = document.getElementById('host');
+const shadow = host.attachShadow({ mode: 'open' });
+
+const span = document.createElement('span');
+span.textContent = 'Я внутри Shadow DOM';
+shadow.appendChild(span);
 ```
 
 ### HTML Templates
@@ -80,6 +114,27 @@ document.body.appendChild(el);
   const root = window.host.shadowRoot;
   root.querySelectorAll('p').length; // 1
 </script>
+```
+
+### Пишем селекторы по новому
+
+```css
+:host([variant='alt']) {
+  --color: #000;
+  --bg-color: #fff;
+}
+```
+
+```html
+<body>
+  <acme-button>Кнопка</acme-button>
+</body>
+```
+
+```html
+<body>
+  <acme-button variant="alt">Кнопка</acme-button>
+</body>
 ```
 
 ### Атрибут part, слоты и CSS vars
@@ -141,25 +196,39 @@ class AcmeButton extends LitElement {
 }
 ```
 
-### Пишем селекторы по новому
+### Слоты
 
-```css
-:host([variant='alt']) {
-  --color: #000;
-  --bg-color: #fff;
+```ts
+render() {
+  return repeat(
+    range(3),
+    (_, i) => i + counter,
+    (_, i) => {
+      const n = i + counter;
+      return html`
+        <div class="wrapper">
+          <slot name="n-${n}">N</slot>
+        </div>`;
+    },
+  );
 }
 ```
 
 ```html
-<body>
-  <acme-button>Кнопка</acme-button>
-</body>
+<my-swiper>
+  <div slot="n-0">0</div>
+  <div slot="n-1">1</div>
+  <div slot="n-2">2</div>
+  <!-- ... -->
+</my-swiper>
 ```
 
-```html
-<body>
-  <acme-button variant="alt">Кнопка</acme-button>
-</body>
+```css
+my-swiper:not(:defined) {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+}
 ```
 
 ### Чрезмерная изоляция
@@ -259,12 +328,69 @@ export class CustomInput extends LitElement {
 
 ### Управление состоянием
 
+**[Context Protocol](https://github.com/webcomponents-cg/community-protocols/blob/main/proposals/context.md)**
+
+```mermaid
+sequenceDiagram
+    actor Consumer as Потребитель (Consumer)
+    participant DOM
+    actor Provider as Поставщик (Provider)
+
+    %% --- Этап 1: Потребитель запрашивает контекст ---
+    Consumer->>DOM: Диспетчеризует 'context-request'
+    Note right of Consumer: Содержит `context`, `callback`<br/>и опционально `subscribe: true`
+
+    DOM->>Provider: Получает 'context-request'
+
+    %% --- Этап 2: Поставщик обрабатывает запрос в зависимости от наличия подписки ---
+    activate Provider
+    Provider->>DOM: 1. Вызывает `event.stopImmediatePropagation()`
+    Note over Provider, DOM: Гарантирует, что запрос не будет обработан дважды
+
+    alt Запрос с подпиской (subscribe: true)
+        Provider->>Provider: 2a. Сохраняет информацию (WeakRef на callback)
+        Note over Provider: Рекомендуется для предотвращения утечек памяти
+
+        Provider->>Provider: 3a. Создает функцию отписки (unsubscribe)
+
+        Provider-->>Consumer: 4a. Вызывает `callback(значение, unsubscribe)`
+
+    else Разовый запрос (без подписки)
+        Provider-->>Consumer: 2b. Вызывает `callback(значение)`
+    end
+    deactivate Provider
+
+    %% --- Этап 3: Потребитель получает данные ---
+    activate Consumer
+    Consumer->>Consumer: Получает значение и обновляет UI
+    Note over Consumer: Если была подписка, также сохраняет<br/>функцию `unsubscribe` на будущее.
+    deactivate Consumer
+
+    %% --- Этап 4: Обновление (только для подписчиков) ---
+    loop Если значение меняется (и есть подписчики)
+        activate Provider
+        Provider->>Provider: Значение изменилось
+        Provider-->>Consumer: Уведомляет Потребителя о новом значении
+        Note over Provider, Consumer: Механизм не специфицирован протоколом!
+        deactivate Provider
+
+        activate Consumer
+        Consumer->>Consumer: Получает обновление и обновляет UI
+        deactivate Consumer
+    end
+
+    %% --- Этап 5: Отписка (только для подписчиков) ---
+    Consumer->>Provider: При удалении из DOM вызывает `unsubscribe()`
+```
+
 ```typescript
 class StoreController implements ReactiveController {
   /* ... */
   hostConnected(): void {
-    this.onNewState(this.store.getState());
-    this.storeUnsubscribe = store.subscribe(() => this.host.requestUpdate());
+    this.storeUnsubscribe = store.subscribe((state) => {
+      this.state = state;
+      this.host.requestUpdate();
+    });
   }
 
   hostDisconnected(): void {
@@ -386,6 +512,30 @@ class AcmeApp extends LitElement {
           '.',
         )}
       />`;
+  }
+}
+```
+
+### KeepAlive
+
+```ts
+class EddlCouponsApp extends LitElement {
+  public route = new RouteController(
+    this,
+    { store: this.router },
+    {
+      'cps-index': () => html`<eddl-cps-index-page> </eddl-cps-index-page>`,
+      'cps-campaign': ({ params }) =>
+        html`<eddl-cps-coupon-page
+          .couponId=${params.id}
+        ></eddl-cps-coupon-page>`,
+    },
+  );
+
+  override render() {
+    return html` <my-header></my-header>
+      ${keepAlive(this.router.route.pathname, this.route.render(), { max: 20 })}
+      <my-footer></my-footer>`;
   }
 }
 ```
