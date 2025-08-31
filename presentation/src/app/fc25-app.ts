@@ -8,17 +8,19 @@ import '../components/drawing-overlay.js';
 import type { ProjectManifest } from '../config/interface.ts';
 
 // Examples
+import shadowDomCreate from '../config/shadow-dom-create.ts';
 import shadowDomStylesEncapsulation from '../config/shadow-dom-styles-encapsulation.ts';
+import shadowDomStyling from '../config/shadow-dom-styling.ts';
 import encapsulationIssues from '../config/encapsulation-issues.ts';
 import globalStyles from '../config/global-styles.ts';
 import formIssues from '../config/form-issues.ts';
 import directives from '../config/directives.ts';
-import shadowDomStyling from '../config/shadow-dom-styling.ts';
 
 // Styles
 import theme from '../styles/theme-vscode.css?inline';
 
 const examples: Record<string, ProjectManifest> = {
+  'shadow-dom-create': shadowDomCreate,
   'shadow-dom-encapsulation': shadowDomStylesEncapsulation,
   'shadow-dom-styling': shadowDomStyling,
   'global-styles': globalStyles,
@@ -86,6 +88,9 @@ export class FC25App extends LitElement {
 
   renderMenu() {
     return html`<ul>
+      <li>
+        <a href="/shadow-dom-create">Создание Shadow DOM</a>
+      </li>
       <li>
         <a href="/shadow-dom-encapsulation">Инкапсуляция Shadow DOM</a>
       </li>
