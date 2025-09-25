@@ -23,6 +23,21 @@ $('.alert button').on('click', function () {
 </my-alert>
 ```
 
+### Почему в Lit быстрый render?
+
+```js
+const name = 'World';
+html`<h1>Hello ${name}</h1>`;
+```
+
+```js
+const a = {
+  _$litType$: 1,
+  strings: ['<h1>Hello ', '</h1>'],
+  values: ['World'],
+};
+```
+
 ## 02. Что такое веб-компоненты?
 
 ### Custom Elements
@@ -59,12 +74,8 @@ document.body.appendChild(el);
 ### Shadow DOM
 
 ```js
-const host = document.getElementById('host');
-const shadow = host.attachShadow({ mode: 'open' });
-
-const span = document.createElement('span');
-span.textContent = 'Я внутри Shadow DOM';
-shadow.appendChild(span);
+host.attachShadow({ mode: 'open' });
+host.shadowRoot.appendChild(/* ... */);
 ```
 
 ### HTML Templates
@@ -324,9 +335,74 @@ export class CustomInput extends LitElement {
 </body>
 ```
 
+### Form Associated
+
+```ts
+@customElement('custom-input')
+class CustomInput extends LitElement {
+  static styles = [sheet];
+
+  static formAssociated = true;
+  private internals = this.attachInternals();
+
+  @property() name!: string;
+
+  render() {
+    return html`
+      <input @input=${this.onInput} name="${this.name}" type="text" />
+    `;
+  }
+
+  private onInput(e: InputEvent) {
+    this.internals.setFormValue(e.target.value);
+  }
+}
+```
+
+### Form Input with slot
+
+```ts
+@customElement('custom-input')
+export class CustomInput extends LitElement {
+  static styles = [sheet];
+
+  render() {
+    return html`<slot></slot>`;
+  }
+}
+```
+
+```css
+input {
+  display: block;
+  font-family: inherit;
+  font-size: inherit;
+  margin-bottom: 1rem;
+  color: #fff;
+  background-color: #272727;
+}
+```
+
+```css
+::slotted(input) {
+  display: block;
+  font-family: inherit;
+  font-size: inherit;
+  margin-bottom: 1rem;
+  color: #fff;
+  background-color: #272727;
+}
+```
+
+```html
+<custom-input>
+  <input name="value" type="text" />
+</custom-input>
+```
+
 ## 04. Экосистема Lit
 
-### Управление состоянием
+### Context в Lit
 
 **[Context Protocol](https://github.com/webcomponents-cg/community-protocols/blob/main/proposals/context.md)**
 
@@ -383,6 +459,42 @@ sequenceDiagram
     Consumer->>Provider: При удалении из DOM вызывает `unsubscribe()`
 ```
 
+```ts
+// Provider
+import { provide } from '@lit/context';
+
+class MyApp extends LitElement {
+  @provide({ context: userContext })
+  user = new User();
+}
+
+// Consumer
+import { consume } from '@lit/context';
+
+class MyElement extends LitElement {
+  @consume({ context: userContext })
+  public user?: User;
+}
+```
+
+### Сигналы
+
+```ts
+import { SignalWatcher, watch, signal } from '@lit-labs/signals';
+
+const count = signal(0);
+
+class MyCounter extends SignalWatcher(LitElement) {
+  render() {
+    return html`<button @click=${this.onClick}>Count ${watch(count)}</button>`;
+  }
+
+  onClick = () => count.set(count.get() + 1);
+}
+```
+
+### Управление состоянием (наше решение)
+
 ```typescript
 class StoreController implements ReactiveController {
   /* ... */
@@ -409,6 +521,28 @@ class UserProfile extends LitElement {
 
   render() {
     return html`<p>User name: ${this.profileStore.value.name}</p>`;
+  }
+}
+```
+
+### Роутинг в Lit
+
+```ts
+class MyApp extends LitElement {
+  private routes = new Router(this, [
+    { path: '/', render: () => html`<h1>Home</h1>` },
+    {
+      path: '/profile/:id',
+      render: ({ id }) => html`<x-profile .profileId=${id}></x-profile>`,
+    },
+  ]);
+
+  render() {
+    return html`
+      <header>...</header>
+      <main>${this.routes.outlet()}</main>
+      <footer>...</footer>
+    `;
   }
 }
 ```
@@ -450,6 +584,25 @@ class EddlCouponsApp extends LitElement {
     return html` <my-header></my-header>
       ${this.route.render()}
       <my-footer></my-footer>`;
+  }
+}
+```
+
+### Асинхронные задачи
+
+```ts
+class MyElement extends LitElement {
+  private productTask = new Task(this, {
+    task: async ([productId], { signal }) =>
+      (await fetch(`/${productId}`, { signal })).json(),
+    args: () => [this.productId],
+  });
+  render() {
+    return this.productTask.render({
+      pending: () => html`Loading product...`,
+      complete: (product) => html`Product: ${product}`,
+      error: (e) => html`Error: ${e}`,
+    });
   }
 }
 ```
@@ -538,4 +691,30 @@ class EddlCouponsApp extends LitElement {
       <my-footer></my-footer>`;
   }
 }
+```
+
+### Директивы analytics, intersectionObserver, sticky
+
+```ts
+html`
+  <header style="position: sticky; top: 0;" class="header" ${sticky()}>
+    Заголовок
+  </header>
+  <main ${analytics({ events: ['appear'], ...params })}>...</main>
+  <hero-element
+    ${intersectionObserver({
+      onIntersect: () => {
+        /* ... */
+      },
+    })}
+  ></hero-element>
+`;
+```
+
+## 06. Выводы
+
+### Интерактивность для классических веб-сайтов
+
+```html
+<relative-time datetime="2025-05-15T09:58:45Z"> May 15, 2025 </relative-time>
 ```
