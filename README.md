@@ -17,6 +17,8 @@ UI-kit, разработанные на Lit:
 
 - [Material 3](https://github.com/material-components/material-web)
 - [Adobe Spectrum](https://github.com/adobe/spectrum-web-components)
+- [Carbon (IBM)](https://github.com/carbon-design-system/carbon)
+- [Red Hat's Design System](https://github.com/RedHat-UX/red-hat-design-system)
 
 Shadow DOM:
 
@@ -28,10 +30,10 @@ Shadow DOM:
 
 Поддержка веб-компонентов в фреймворках:
 
+- [Сравнение всех фреймворков](https://custom-elements-everywhere.com/). **Обязательно посмотрите, если планируете разрабатывать универсальный ui-kit!**
 - [React](https://react.dev/reference/react-dom/components#custom-html-elements)
 - [Vue](https://vuejs.org/guide/extras/web-components.html)
 - [Angular](https://angular.dev/guide/elements)
-- [Другие фреймворки](https://custom-elements-everywhere.com/)
 
 Статистика:
 
