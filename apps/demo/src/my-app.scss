@@ -1,0 +1,17 @@
+@use 'pkg:ui/scss/mixins' as ui;
+@use 'pkg:ui/scss/variables' as *;
+
+a {
+  // Используем mixin из пакета ui
+  @include ui.headless-link;
+
+  display: block;
+  width: fit-content;
+  margin: 1em auto 0;
+
+  &:hover {
+    text-decoration: underline;
+    // Переменные из пакета ui
+    color: $text-secondary;
+  }
+}

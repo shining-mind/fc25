@@ -1,5 +1,17 @@
 # FC25 | Веб-компоненты — да это ж круто!
 
+## Как начать использовать веб-компоненты
+
+- Попробовать онлайн: [https://lit.dev/playground/](https://lit.dev/playground/)
+- Стартовый шаблон Vite: `npm create vite@latest -- --template lit-ts`
+
+Для вашего удобства можно посмотреть примеры в этом репозитории:
+
+- Демо приложение с UI-kit на Lit: `npm run start:demo`, исходный код: [app](./apps/demo), [UI-kit](./packages/ui).
+- Запустить `storybook`: `npm run storybook:ui`.
+
+Альтернативно можно использовать скаффолдер от open-wc: `npm init @open-wc`.
+
 ## Полезные ссылки
 
 - [Документация Lit](https://lit.dev/docs/)
