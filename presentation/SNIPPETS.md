@@ -213,11 +213,11 @@ class AcmeButton extends LitElement {
 render() {
   return repeat(
     range(3),
-    (_, i) => i + counter,
+    (_, i) => i + offset,
     (_, i) => {
-      const n = i + counter;
+      const n = i + offset;
       return html`
-        <div class="wrapper">
+        <div class="slide">
           <slot name="n-${n}">N</slot>
         </div>`;
     },

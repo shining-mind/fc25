@@ -35,6 +35,13 @@ Shadow DOM:
 - [Vue](https://vuejs.org/guide/extras/web-components.html)
 - [Angular](https://angular.dev/guide/elements)
 
+Киллер-фичи Lit:
+
+- [Асинхронный рендеринг](https://lit.dev/docs/templates/directives/#asynchronous-rendering)
+- [Пользовательские директивы](https://lit.dev/docs/templates/custom-directives/)
+- [Реактивные контроллеры](https://lit.dev/docs/composition/controllers/)
+- [Дополнительные библиотеки для: анимирования, виртуализации и прочего](https://lit.dev/docs/libraries/labs/)
+
 Статистика:
 
 - [State of HTML 2024, Web Components](https://2024.stateofhtml.com/en-US/features/web_components/)
