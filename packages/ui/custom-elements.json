@@ -1,0 +1,214 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/components/fc25-accordion/fc25-accordion-item.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Элемент аккордеона с возможностью раскрытия и сворачивания содержимого.\n\nСодержит заголовок (через атрибут label или слот) и основное содержимое.\nПри клике на заголовок переключается состояние раскрытия.",
+          "name": "Fc25AccordionItem",
+          "cssProperties": [
+            {
+              "description": "цвет фона элемента аккордеона",
+              "name": "--accordion-background-color"
+            },
+            {
+              "description": "цвет текста содержимого элемента",
+              "name": "--accordion-content-color"
+            }
+          ],
+          "slots": [
+            {
+              "description": "основное содержимое элемента аккордеона",
+              "name": "default"
+            },
+            {
+              "description": "кастомный заголовок элемента (альтернатива атрибуту label)",
+              "name": "label"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Заголовок элемента аккордеона",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "defaultIcon",
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "handleToggle",
+              "privacy": "private",
+              "readonly": true
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent<AccordionItemToggleEvent>"
+              },
+              "description": "испускается при переключении состояния",
+              "name": "accordion-item-toggle"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "состояние раскрытия элемента",
+              "name": "expanded"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Заголовок элемента аккордеона",
+              "fieldName": "label"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fc25-accordion-item",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Fc25AccordionItem",
+          "declaration": {
+            "name": "Fc25AccordionItem",
+            "module": "src/components/fc25-accordion/fc25-accordion-item.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fc25-accordion-item",
+          "declaration": {
+            "name": "Fc25AccordionItem",
+            "module": "src/components/fc25-accordion/fc25-accordion-item.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/fc25-accordion/fc25-accordion.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Компонент аккордеона для отображения сворачиваемого контента с возможностью раскрытия и сворачивания элементов.\n\nПоддерживает как одиночное, так и множественное раскрытие элементов.",
+          "name": "Fc25Accordion",
+          "cssProperties": [
+            {
+              "description": "цвет фона аккордеона",
+              "name": "--accordion-background-color"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "multiple",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Разрешить раскрытие нескольких элементов одновременно",
+              "attribute": "multiple"
+            },
+            {
+              "kind": "field",
+              "name": "items",
+              "type": {
+                "text": "Fc25AccordionItem[] | undefined"
+              },
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "handleItemToggle",
+              "privacy": "private",
+              "readonly": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "multiple",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Разрешить раскрытие нескольких элементов одновременно",
+              "fieldName": "multiple"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fc25-accordion",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Fc25Accordion",
+          "declaration": {
+            "name": "Fc25Accordion",
+            "module": "src/components/fc25-accordion/fc25-accordion.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "fc25-accordion",
+          "declaration": {
+            "name": "Fc25Accordion",
+            "module": "src/components/fc25-accordion/fc25-accordion.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/fc25-accordion/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Fc25Accordion",
+          "declaration": {
+            "name": "Fc25Accordion",
+            "module": "./fc25-accordion.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Fc25AccordionItem",
+          "declaration": {
+            "name": "Fc25AccordionItem",
+            "module": "./fc25-accordion-item.js"
+          }
+        }
+      ]
+    }
+  ]
+}

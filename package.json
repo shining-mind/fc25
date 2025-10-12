@@ -1,9 +1,13 @@
 {
   "workspaces": [
     "presentation",
-    "examples"
+    "examples",
+    "packages/*",
+    "apps/*"
   ],
   "scripts": {
+    "start:demo": "npm run build --workspace=ui && npm run dev --workspace=demo",
+    "storybook:ui": "npm run storybook --workspace=ui",
     "examples": "npm run start --workspace=examples",
     "presentation": "npm run start --workspace=presentation"
   }

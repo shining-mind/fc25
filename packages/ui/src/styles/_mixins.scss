@@ -1,0 +1,14 @@
+@use './variables' as *;
+
+@mixin headless-link {
+  color: $text-primary;
+  text-decoration: none;
+}
+
+@mixin headless-button {
+  color: inherit;
+  border: none;
+  background: transparent;
+  padding: 0;
+  line-height: 0;
+}
