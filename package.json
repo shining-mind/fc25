@@ -1,11 +1,10 @@
 {
-  "packageManager": "yarn@4.9.2",
   "workspaces": [
     "presentation",
     "examples"
   ],
   "scripts": {
-    "examples": "yarn workspace examples start",
-    "presentation": "yarn workspace presentation start"
+    "examples": "npm run start --workspace=examples",
+    "presentation": "npm run start --workspace=presentation"
   }
 }

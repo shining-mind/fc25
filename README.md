@@ -56,10 +56,12 @@ Shadow DOM:
 
 - История развития веб-компонентов [[1]](https://dev.to/besworks/the-past-present-and-future-of-web-components-2g43), [[2]](https://dev.to/coderpad/web-components-101-history-2p24)
 - Как ESM влияет на тришейкинг [[1]](https://rollupjs.org/faqs/#why-are-es-modules-better-than-commonjs-modules), [[2]](https://web.dev/articles/reduce-javascript-payloads-with-tree-shaking?hl=ru#keeping_babel_from_transpiling_es6_modules_to_commonjs_modules)
+- [Ускорение Edge за счет использования веб-компонентов](https://blogs.windows.com/msedgedev/2024/05/28/an-even-faster-microsoft-edge/)
+- Известные баги Shadow DOM в Safari [см. список depends on](https://bugs.webkit.org/show_bug.cgi?id=148695)
 
 ## Примеры из доклада
 
-Перед началом выполнить: `yarn`
+Перед началом выполнить: `npm install`
 
-- Live примеры: `yarn presentation`
-- Статичные примеры с пояснениями: `yarn examples`
+- Live примеры: `npm run presentation`
+- Статичные примеры с пояснениями: `npm run examples`
