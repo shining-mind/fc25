@@ -8,7 +8,7 @@ import {
 import { createStyleSheet } from '../../utils/create-style-sheet.js';
 import type { Fc25AccordionItem } from './fc25-accordion-item.js';
 
-import { normalizeStylesheet } from '../../styles/normalize/index.js';
+import { normalizeStyleSheet } from '../../styles/normalize/index.js';
 import css from './fc25-accordion.scss?inline';
 
 /**
@@ -37,7 +37,7 @@ import css from './fc25-accordion.scss?inline';
  */
 @customElement('fc25-accordion')
 export class Fc25Accordion extends LitElement {
-  static override styles = [normalizeStylesheet, createStyleSheet(css)];
+  static override styles = [normalizeStyleSheet, createStyleSheet(css)];
 
   /**
    * Разрешить раскрытие нескольких элементов одновременно

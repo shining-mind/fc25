@@ -3,7 +3,7 @@ import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { createStyleSheet } from '../../utils/create-style-sheet.js';
 
-import { normalizeStylesheet } from '../../styles/normalize/index.js';
+import { normalizeStyleSheet } from '../../styles/normalize/index.js';
 import css from './fc25-accordion-item.scss?inline';
 
 /**
@@ -46,7 +46,7 @@ import css from './fc25-accordion-item.scss?inline';
  */
 @customElement('fc25-accordion-item')
 export class Fc25AccordionItem extends LitElement {
-  static override styles = [normalizeStylesheet, createStyleSheet(css)];
+  static override styles = [normalizeStyleSheet, createStyleSheet(css)];
 
   /**
    * Заголовок элемента аккордеона

@@ -1,11 +1,11 @@
-# Нормализация CSS
+# CSS Normalization
 
-Данный модуль содержит файлы для нормализации CSS (приведения к единому виду во всех браузерах).
-Файлы взяты из https://github.com/JohnAlbin/normalize-scss/tree/8.0.0.
+This module contains files for CSS normalization (bringing it to a single form in all browsers).
+The files are taken from https://github.com/JohnAlbin/normalize-scss/tree/8.0.0.
 
-В файлы внесены изменения, чтобы не было использования deprecated API sass:
+Changes have been made to the files to avoid using the deprecated sass API:
 
-- Вместо глобальной функции `unit` используется `math.unit`
-- Вместо `@import` используется `@use`
+- Instead of the global `unit` function, `math.unit` is used
+- Instead of `@import`, `@use` is used
 
-Также есть возможность добавить свою кастомную нормализацию в файл `_custom.scss`.
+It is also possible to add your own custom normalization to the `_custom.scss` file.

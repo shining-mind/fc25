@@ -5,7 +5,7 @@ import { createStyleSheet } from 'ui/utils.js';
 // Импортируем из нашего ui-kit компоненты, которые хотим использовать
 import 'ui/components/fc25-accordion.js';
 
-import { normalizeStylesheet } from 'ui/styles/normalize.js';
+import { normalizeStyleSheet } from 'ui/styles/normalize.js';
 import rawCss from './my-app.scss?inline';
 
 @customElement('my-app')
@@ -15,7 +15,7 @@ export class MyApp extends LitElement {
    */
   static override styles = [
     // Можно импортировать и подключить глобальные стили к компоненту
-    normalizeStylesheet,
+    normalizeStyleSheet,
     // Можно задать стили локально
     css`
       :host {

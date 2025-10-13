@@ -1,4 +1,4 @@
 import { createStyleSheet } from '../../utils/index.js';
-import rawCss from './_index.scss?inline';
+import normalizeCss from './_index.scss?inline';
 
-export const normalizeStylesheet = createStyleSheet(rawCss);
+export const normalizeStyleSheet = createStyleSheet(normalizeCss);
