@@ -10,9 +10,6 @@ import rawCss from './my-app.scss?inline';
 
 @customElement('my-app')
 export class MyApp extends LitElement {
-  /**
-   * Добавляем нормализацию стилей для всего приложения
-   */
   static override styles = [
     // Можно импортировать и подключить глобальные стили к компоненту
     normalizeStyleSheet,
@@ -34,7 +31,7 @@ export class MyApp extends LitElement {
   ];
 
   render() {
-    // У вас должен быть установлен lit-plugin для нормально DX при работе с веб-компонентами
+    // У вас должен быть установлен lit-plugin для нормального DX при работе с веб-компонентами
     return html`
       <slot></slot>
 

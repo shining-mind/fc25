@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "cem analyze && vite build && tsc --project ./tsconfig.build.json && lit-analyzer",
+    "build": "cem analyze && lit-analyzer && vite build && tsc --project ./tsconfig.build.json",
     "preview": "vite preview",
     "storybook": "concurrently -kr \"cem analyze --watch\" \"storybook dev -p 6006\"",
     "build-storybook": "cem analyze && storybook build",
