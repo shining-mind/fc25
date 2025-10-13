@@ -3,9 +3,9 @@
 
 :host {
   display: block;
-  padding: 16px 0;
+  padding: 1rem 0;
   background-color: var(--accordion-background-color, $background-primary);
-  border-bottom: 1px solid $background-secondary;
+  border-bottom: var(--accordion-item-border, 1px solid $background-secondary);
 }
 
 :host(:last-child) {
@@ -13,25 +13,25 @@
 }
 
 :host([expanded]) {
-  .icon {
+  [part='icon'] {
     transform: rotate(180deg);
   }
 
-  .content {
+  [part='content'] {
     max-height: 100%;
     visibility: visible;
-    margin-top: 8px;
+    margin-top: 0.5rem;
     opacity: 1;
   }
 }
 
-button {
+[part='header'] {
   @include headless-button;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
+  gap: 1rem;
   width: 100%;
 
   font-size: 100%;
@@ -41,14 +41,14 @@ button {
   text-align: left;
 }
 
-.icon {
-  flex: 24px 0 0;
+[part='icon'] {
+  flex: 1.5rem 0 0;
   transition: transform 0.2s;
   margin-left: 4px;
   line-height: 0;
 }
 
-.content {
+[part='content'] {
   width: 100%;
   max-height: 0;
   overflow: hidden;

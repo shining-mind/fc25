@@ -34,6 +34,9 @@ const meta: Meta<ArgTypes> = {
     '--accordion-content-color': {
       control: 'color',
     },
+    '--accordion-item-border': {
+      control: 'text',
+    },
   },
 };
 

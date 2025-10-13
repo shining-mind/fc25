@@ -18,6 +18,24 @@
             {
               "description": "цвет текста содержимого элемента",
               "name": "--accordion-content-color"
+            },
+            {
+              "description": "граница между элементами аккордеона",
+              "name": "--accordion-item-border"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "заголовок элемента",
+              "name": "header"
+            },
+            {
+              "description": "содержимое элемента",
+              "name": "content"
+            },
+            {
+              "description": "контейнер иконки",
+              "name": "icon"
             }
           ],
           "slots": [
@@ -57,9 +75,9 @@
           "events": [
             {
               "type": {
-                "text": "CustomEvent<AccordionItemToggleEvent>"
+                "text": "CustomEvent<boolean>"
               },
-              "description": "испускается при переключении состояния",
+              "description": "испускается при переключении состояния, можно перехватить",
               "name": "accordion-item-toggle"
             }
           ],

@@ -10,11 +10,48 @@
       type="module"
       src="./src/components/fc25-accordion/index.js"
     ></script>
+    <style>
+      :root {
+        --accordion-item-border: 1px dashed rgba(52, 160, 242, 0.8);
+      }
+
+      fc25-accordion-item::part(content) {
+        padding-left: 0.5rem;
+        box-shadow: inset 0px 0px 0.5rem 0.25rem rgba(52, 160, 242, 0.2);
+      }
+
+      fc25-accordion-item fc25-accordion {
+        color: #000;
+        margin: 0 2rem 0.5rem;
+      }
+    </style>
   </head>
   <body>
     <fc25-accordion>
-      <fc25-accordion-item label="Заголовок">
-        <p>Текст</p>
+      <fc25-accordion-item label="Заголовок 1">
+        <p>Текст 1</p>
+
+        <fc25-accordion multiple>
+          <fc25-accordion-item label="Заголовок 1.1">
+            <p>Текст 1.1</p>
+          </fc25-accordion-item>
+          <fc25-accordion-item label="Заголовок 1.2">
+            <p>Текст 1.2</p>
+          </fc25-accordion-item>
+        </fc25-accordion>
+      </fc25-accordion-item>
+
+      <fc25-accordion-item label="Заголовок 2">
+        <p>Текст 2</p>
+
+        <fc25-accordion multiple>
+          <fc25-accordion-item label="Заголовок 2.1">
+            <p>Текст 2.1</p>
+          </fc25-accordion-item>
+          <fc25-accordion-item label="Заголовок 2.2">
+            <p>Текст 2.2</p>
+          </fc25-accordion-item>
+        </fc25-accordion>
       </fc25-accordion-item>
     </fc25-accordion>
   </body>

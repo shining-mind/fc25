@@ -15,12 +15,18 @@ import css from './fc25-accordion-item.scss?inline';
  * @slot default - основное содержимое элемента аккордеона
  * @slot label - кастомный заголовок элемента (альтернатива атрибуту label)
  *
- * @fires {CustomEvent<AccordionItemToggleEvent>} accordion-item-toggle - испускается при переключении состояния
+ * @fires {CustomEvent<boolean>} accordion-item-toggle - испускается при
+ *  переключении состояния, можно перехватить
  *
  * @attr {boolean} expanded - состояние раскрытия элемента
  *
  * @cssprop [--accordion-background-color] - цвет фона элемента аккордеона
  * @cssprop [--accordion-content-color] - цвет текста содержимого элемента
+ * @cssprop [--accordion-item-border] - граница между элементами аккордеона
+ *
+ * @csspart header - заголовок элемента
+ * @csspart content - содержимое элемента
+ * @csspart icon - контейнер иконки
  *
  * @example
  * ```html
@@ -56,15 +62,15 @@ export class Fc25AccordionItem extends LitElement {
 
   protected override render() {
     return html`
-      <button @click=${this.handleToggle}>
+      <button @click=${this.handleToggle} part="header">
         <slot name="label">${this.label}</slot>
 
-        <span class="icon">
+        <span part="icon">
           <slot name="icon">${this.defaultIcon}</slot>
         </span>
       </button>
 
-      <div class="content">
+      <div part="content">
         <slot></slot>
       </div>
     `;
@@ -82,16 +88,19 @@ export class Fc25AccordionItem extends LitElement {
   }
 
   private readonly handleToggle = () => {
-    this.toggleAttribute('expanded');
+    const event = new CustomEvent<boolean>('accordion-item-toggle', {
+      detail: this.hasAttribute('expanded'),
+      bubbles: true,
+      cancelable: true,
+    });
 
-    // Рекомендуется сделать базовый класс для своих компонентов, чтобы события было испускать проще
-    this.dispatchEvent(
-      new CustomEvent('accordion-item-toggle', {
-        composed: true,
-        bubbles: true,
-        cancelable: true,
-      }),
-    );
+    // Рекомендуется сделать базовый класс для своих компонентов, чтобы испускать события проще
+    this.dispatchEvent(event);
+
+    // Событие можно перехватить и запретить открытие
+    if (!event.defaultPrevented) {
+      this.toggleAttribute('expanded');
+    }
   };
 }
 
