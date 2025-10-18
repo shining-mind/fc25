@@ -1,0 +1,6 @@
+@use '../../styles/variables' as *;
+
+:host {
+  display: block;
+  background-color: var(--accordion-background-color, $background-primary);
+}

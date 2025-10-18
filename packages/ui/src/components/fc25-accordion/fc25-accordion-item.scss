@@ -1,0 +1,62 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+:host {
+  display: block;
+  padding: 1rem 0;
+  background-color: var(--accordion-background-color, $background-primary);
+  border-bottom: var(--accordion-item-border, 1px solid $background-secondary);
+}
+
+:host(:last-child) {
+  border-bottom: none;
+}
+
+:host([expanded]) {
+  [part='icon'] {
+    transform: rotate(180deg);
+  }
+
+  [part='content'] {
+    max-height: 100%;
+    visibility: visible;
+    margin-top: 0.5rem;
+    opacity: 1;
+  }
+}
+
+[part='header'] {
+  @include headless-button;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+
+  font-size: 100%;
+  line-height: 1.15;
+
+  cursor: pointer;
+  text-align: left;
+}
+
+[part='icon'] {
+  flex: 1.5rem 0 0;
+  transition: transform 0.2s;
+  margin-left: 4px;
+  line-height: 0;
+}
+
+[part='content'] {
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+
+  opacity: 0;
+  color: var(--accordion-content-color, $text-secondary);
+  transition:
+    opacity 0.4s,
+    visibility 0.1s;
+}

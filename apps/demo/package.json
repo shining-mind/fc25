@@ -1,0 +1,21 @@
+{
+  "name": "demo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && lit-analyzer && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lit": "3.3.1",
+    "ui": "^0.0.0"
+  },
+  "devDependencies": {
+    "rollup-plugin-minify-template-literals": "1.1.7",
+    "ts-lit-plugin": "2.0.2",
+    "typescript": "5.8.3",
+    "vite": "7.1.7"
+  }
+}
