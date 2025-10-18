@@ -6,6 +6,8 @@ import { createStyleSheet } from '../../utils/create-style-sheet.js';
 import { normalizeStyleSheet } from '../../styles/normalize/index.js';
 import css from './fc25-accordion-item.scss?inline';
 
+export type AccordionItemToggleEvent = CustomEvent<{ isExpanding: boolean }>;
+
 /**
  * Элемент аккордеона с возможностью раскрытия и сворачивания содержимого.
  *
@@ -15,7 +17,7 @@ import css from './fc25-accordion-item.scss?inline';
  * @slot default - основное содержимое элемента аккордеона
  * @slot label - кастомный заголовок элемента (альтернатива атрибуту label)
  *
- * @fires {CustomEvent<boolean>} accordion-item-toggle - испускается при
+ * @fires {AccordionItemToggleEvent} accordion-item-toggle - испускается при
  *  переключении состояния, можно перехватить
  *
  * @attr {boolean} expanded - состояние раскрытия элемента
@@ -88,16 +90,16 @@ export class Fc25AccordionItem extends LitElement {
   }
 
   private readonly handleToggle = () => {
-    const event = new CustomEvent<boolean>('accordion-item-toggle', {
-      detail: this.hasAttribute('expanded'),
+    const event = new CustomEvent('accordion-item-toggle', {
+      detail: { isExpanding: !this.hasAttribute('expanded') },
       bubbles: true,
       cancelable: true,
-    });
+    }) as AccordionItemToggleEvent;
 
     // Рекомендуется сделать базовый класс для своих компонентов, чтобы испускать события проще
     this.dispatchEvent(event);
 
-    // Событие можно перехватить и запретить открытие
+    // Событие можно перехватить и запретить изменение состояния
     if (!event.defaultPrevented) {
       this.toggleAttribute('expanded');
     }

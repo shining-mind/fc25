@@ -75,7 +75,7 @@
           "events": [
             {
               "type": {
-                "text": "CustomEvent<boolean>"
+                "text": "AccordionItemToggleEvent"
               },
               "description": "испускается при переключении состояния, можно перехватить",
               "name": "accordion-item-toggle"

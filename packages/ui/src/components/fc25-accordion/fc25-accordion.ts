@@ -6,7 +6,10 @@ import {
 } from 'lit/decorators.js';
 
 import { createStyleSheet } from '../../utils/create-style-sheet.js';
-import type { Fc25AccordionItem } from './fc25-accordion-item.js';
+import type {
+  AccordionItemToggleEvent,
+  Fc25AccordionItem,
+} from './fc25-accordion-item.js';
 
 import { normalizeStyleSheet } from '../../styles/normalize/index.js';
 import css from './fc25-accordion.scss?inline';
@@ -60,11 +63,13 @@ export class Fc25Accordion extends LitElement {
     return html`<slot></slot>`;
   }
 
-  private readonly handleItemToggle = (event: CustomEvent) => {
+  private readonly handleItemToggle = (event: AccordionItemToggleEvent) => {
     const item = event.target as Fc25AccordionItem;
+    const { isExpanding } = event.detail;
+
     event.stopPropagation();
 
-    if (!this.multiple && item.hasAttribute('expanded')) {
+    if (!this.multiple && isExpanding) {
       this.items?.forEach((prev) => {
         if (prev.hasAttribute('expanded') && prev !== item) {
           prev.removeAttribute('expanded');
